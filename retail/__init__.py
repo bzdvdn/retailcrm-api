@@ -1,6 +1,7 @@
 import json
 import requests
 from time import sleep
+from urllib.parse import urlencode
 
 
 class RetailAPIException(Exception):
@@ -16,7 +17,7 @@ class RetailAPIException(Exception):
 
 class RetailSession(object):
     POST_METHODS = [
-        "fix-external-ids", "create", "edit", "combine", "delete"
+        "fix-external-ids", "create", "edit", "combine", "delete", "links"
     ]
 
 
@@ -28,12 +29,12 @@ class RetailSession(object):
 
     def _send_api_request(self, url, params, http_method):
         if http_method == 'post':
-            response = requests.post(url, data=params, headers={
+            response = self.requests_session.post(url, data=params, headers={
                 "Content-type": "application/x-www-form-urlencoded"
             })
         else:
-            url += "&" + params
-            response = requests.get(url)
+            url += "&" + urlencode(params)
+            response = self.requests_session.get(url)
         try:
             data = response.json()
             success = data.pop("success", False)
@@ -48,7 +49,7 @@ class RetailSession(object):
             if total_pages > 1:
                 for page in range(2,total_pages+1):
                     url += f"&page={page}"
-                    response = requests.get(url).json()
+                    response = self.requests_session.get(url).json()
                     sleep(0.3)
                     result_data.extend(response[result_name])
                     
