@@ -7,6 +7,7 @@ Install using `pip`...
     pip install retail-crm api
 
 Or
+
     git clone https://github.com/bzdvdn/retailcrm-api.git
 
     python3 setup.py
