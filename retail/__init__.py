@@ -68,7 +68,7 @@ class RetailSession(object):
             url = f"{self.crm_url}{path}"
         
         url = f"{url}?apiKey={self.api_token}"
-        params = request._method_args.get("params", "")
+        params = params or {}
         http_method = "post" if request.methods[-1] in self.POST_METHODS else "get"  
         return self._send_api_request(url, params, http_method)
 
