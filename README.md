@@ -37,7 +37,7 @@ update_order = api.orders.edit(object_id="<id>", params=data)
 ```
 
 # TODO
-* full documantation(all retail methods)
+* full documentation(all retail methods)
 * examples
 * async version
 * tests
