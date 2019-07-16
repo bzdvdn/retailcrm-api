@@ -15,9 +15,8 @@ Or
 # Usage
 
 ```python
-from retail import RetailSession, RetailAPI
-session = RetailSession("https://shop123.retailcrm.ru", "<token>") # init retail session
-api = RetailAPI(session) # ensure api
+from retail import  RetailAPI
+api = RetailAPI("https://shop123.retailcrm.ru", "<token>") # init retail api
 
 orders = api.orders() # return full paginated rusults from /api/v5/orders endpoint
 orders_history = api.orders.history() # return full paginated rusults from /api/v5/orders/history endpoint

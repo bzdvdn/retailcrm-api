@@ -75,8 +75,8 @@ class RetailSession(object):
 
 
 class RetailAPI(object):
-    def __init__(self, session, timeout=60, headers={}):
-        self._session = session
+    def __init__(self, crm_url, api_token, timeout=60, headers={}):
+        self._session = RetailSession(crm_url, api_token)
         self._timeout = timeout
         self._method_default_headers = headers
 
