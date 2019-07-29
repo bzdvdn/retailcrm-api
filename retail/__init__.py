@@ -17,12 +17,12 @@ class RetailAPIException(Exception):
 
 class RetailSession(object):
     POST_METHODS = [
-        "fix-external-ids", "create", "edit", "combine", "delete", "links"
+        "fix-external-ids", "create", "edit", "combine", "delete", "links", "event",
     ]
 
 
-    def __init__(self, crm_url, api_token):
-        self.crm_url = f"{crm_url[:-1]}/api/v5/" if crm_url.endswith("/") else f"{crm_url}/api/v5/"
+    def __init__(self, crm_url, api_token, version='v5'):
+        self.crm_url = f"{crm_url[:-1]}/api/{version}/" if crm_url.endswith("/") else f"{crm_url}/api/{version}/"
         self.api_token = api_token
         self.requests_session = requests.Session()
 
@@ -75,8 +75,8 @@ class RetailSession(object):
 
 
 class RetailAPI(object):
-    def __init__(self, crm_url, api_token, timeout=60, headers={}):
-        self._session = RetailSession(crm_url, api_token)
+    def __init__(self, crm_url, api_token, timeout=60, headers={}, version='v5'):
+        self._session = RetailSession(crm_url, api_token, version=version)
         self._timeout = timeout
         self._method_default_headers = headers
 
