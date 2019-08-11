@@ -17,7 +17,8 @@ class RetailAPIException(Exception):
 
 class RetailSession(object):
     POST_METHODS = [
-        "fix-external-ids", "create", "edit", "combine", "delete", "links", "event",
+        "fix_external_ids", "create", "edit", "combine",
+        "delete", "links", "event","upload","update_invoice", "status"
     ]
 
 
