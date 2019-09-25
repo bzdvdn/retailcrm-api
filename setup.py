@@ -2,9 +2,9 @@ from setuptools import setup, find_packages
 
 setup(
     name='retailcrm-api',
-    version='0.0.6',
+    version='0.0.7',
     packages=find_packages(),
-    install_requires = [
+    install_requires=[
         'requests>=2.18.2'
     ],
     description='RetailCRM api v5 wrapper',
